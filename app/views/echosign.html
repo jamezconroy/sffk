@@ -1,0 +1,35 @@
+<div class="jumbotron">
+  <h2>Echosign</h2>
+  <p class="lead">
+    Echosign details below
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#/">SafetyFirstForKids <span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+
+Status: <input type="text" ng-model="agreementFilter.status" />
+<br /><br />
+<table>
+  <tr>
+    <th width="5%"% ng-click="doSort('id')">ID</th>
+    <th width="25%" ng-click="doSort('consultantTimesheet.period.startDate')">Period</th>
+    <th width="20%" ng-click="doSort('project.name')">Project</th>
+    <th width="20%" ng-click="doSort('consultant.name')">Consultant</th>
+    <th width="25%" >Signees</th>
+    <th width="10%" ng-click="doSort('status')">Status</th>
+  </tr>
+  <tr ng-repeat="agreement in agreements | filter:agreementFilter | orderBy:sortBy:reverse">
+    <td>{{ agreement.id }}</td>
+    <td>{{ agreement.period.startDate | date }} - {{ agreement.period.endDate | date }}</td>
+    <td>{{ agreement.project.name }}</td>
+    <td>{{ agreement.consultant.name }}</td>
+    <td>
+      <span ng-repeat="signee in agreement.signees">{{signee.emailAddress}}<br></span>
+    </td>
+    <td>{{ agreement.status }}</td>
+
+  </tr>
+</table>
+<br />
+
+
+

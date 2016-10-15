@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <h1>James</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+    Always nice to meet you James.
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#/">Very nice<span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+
+Filter: <input type="text" ng-model="customerFilter.name" />
+<br /><br />
+<table>
+  <tr>
+    <th ng-click="doSort('name')">Name</th>
+    <th ng-click="doSort('city')">City</th>
+    <th ng-click="doSort('orderTotal')">Order Total</th>
+    <th ng-click="doSort('joined')">Joined</th>
+  </tr>
+  <tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse">
+    <td>{{ cust.name }}</td>
+    <td>{{ cust.city }}</td>
+    <td>{{ cust.orderTotal | currency }}</td>
+    <td>{{ cust.joined | date }}</td>
+  </tr>
+</table>
+<br />
+
+
+

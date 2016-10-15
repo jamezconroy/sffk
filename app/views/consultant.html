@@ -1,0 +1,32 @@
+<div class="jumbotron">
+  <h2>Consultant Timesheets</h2>
+  <p class="lead">
+    Timesheet details below.
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#/">SafetyFirstForKids <span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+
+Status: <input type="text" ng-model="timesheetFilter.status" />
+<br /><br />
+<table width="100%">
+  <tr>
+    <th width="10%"% ng-click="doSort('id')">ID</th>
+    <th width="25%" ng-click="doSort('consultant')">Consultant</th>
+    <th width="25%" ng-click="doSort('billableProject.name')">Billable Project</th>
+    <th width="25%" ng-click="doSort('externalApprovers')">External Approvers</th>
+    <th width="10%" ng-click="doSort('status')">Status</th>
+  </tr>
+  <tr ng-repeat="timesheet in consultantTimesheets | filter:timesheetFilter | orderBy:sortBy:reverse">
+    <td>{{ timesheet.id }}</td>
+    <td>{{ timesheet.consultant }}</td>
+    <td>{{ timesheet.billableProject.name }}</td>
+    <td>
+      <span ng-repeat="approver in timesheet.externalApprovers">{{approver}}<br></span>
+    </td>
+    <td>{{ timesheet.status }}</td>
+  </tr>
+</table>
+<br />
+
+
+

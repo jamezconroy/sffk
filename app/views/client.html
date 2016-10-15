@@ -1,0 +1,32 @@
+<div class="jumbotron">
+  <h2>Client Timesheets</h2>
+  <p class="lead">
+    Timesheet details below.
+  </p>
+  <p><a class="btn btn-sm btn-success" ng-href="#/">SafetyFirstForKids <span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+
+Status: <input type="text" ng-model="timesheetFilter.status" />
+<br /><br />
+<table width="100%">
+  <tr>
+    <!--<th width="10%"% ng-click="doSort('id')">ID</th>-->
+    <th width="15%" ng-click="doSort('consultantTimesheet.name')">Consultant Timesheet</th>
+    <th width="25%" ng-click="doSort('consultantTimesheet.period.startDate')">Period</th>
+    <th width="25%" ng-click="doSort('project.name')">Project</th>
+    <th width="15%" ng-click="doSort('echosignAgreement.id')">Echosign Agreement</th>
+    <th width="25%" ng-click="doSort('status')">Status</th>
+  </tr>
+  <tr ng-repeat="timesheet in clientTimesheets | filter:timesheetFilter | orderBy:sortBy:reverse">
+    <!--<td>{{ timesheet.id }}</td>-->
+    <td>{{ timesheet.consultantTimesheet.name }}</td>
+    <td>{{ timesheet.consultantTimesheet.period.startDate | date }} - {{ timesheet.consultantTimesheet.period.endDate | date }}</td>
+    <td>{{ timesheet.project.name }}</td>
+    <td>{{ timesheet.echosignAgreement.id }}</td>
+    <td>{{ timesheet.status }}</td>
+  </tr>
+</table>
+<br />
+
+
+

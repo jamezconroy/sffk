@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <h2>Projects</h2>
+  <p class="lead">
+    Here are your projects
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#/">SafetyFirstForKids <span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+
+Project Name: <input type="text" ng-model="projectFilter.name" />
+<br /><br />
+<table>
+  <tr>
+    <th ng-click="doSort('name')">Project Name</th>
+    <th ng-click="doSort('owner')">Owner</th>
+    <th ng-click="doSort('externalApprovers')">External Approvers</th>
+  </tr>
+  <tr ng-repeat="proj in projects | filter:projectFilter | orderBy:sortBy:reverse">
+    <td>{{ proj.name }}</td>
+    <td>{{ proj.owner }}</td>
+    <td>
+      <span ng-repeat="approver in proj.externalApprovers">{{approver}}<br></span>
+    </td>
+  </tr>
+</table>
+<br />
+
+
+
